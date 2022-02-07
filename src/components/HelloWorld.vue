@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <button class="btn btn-primary btn-navy">Hello World!</button>
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br />
@@ -117,6 +118,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -134,5 +136,9 @@ li {
 }
 a {
   color: #42b983;
+}
+
+.btn-navy {
+  background: $brand-navy;
 }
 </style>
