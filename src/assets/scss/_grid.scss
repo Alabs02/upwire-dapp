@@ -1,0 +1,202 @@
+.grid {
+  display: grid;
+
+  &-rows-none {
+    grid-template-rows: none;
+  }
+
+  &-cols-none {
+    grid-template-columns: none;
+  }
+}
+
+.col {
+  &-auto {
+    grid-column: auto;
+  }
+
+  &-span-full {
+    grid-column: 1 / -1;
+  }
+}
+
+.row {
+  &-auto {
+    grid-row: auto;
+  }
+
+  &-span-full {
+    grid-row: 1 / -1;
+  }
+}
+
+.place {
+  &-items {
+    &-center {
+      place-items: center;
+    }
+
+    &-start {
+      place-items: start;
+    }
+
+    &-end {
+      place-items: end;
+    }
+
+    &-stretch {
+      place-items: stretch;
+    }
+
+    &-baseline {
+      place-items: baseline;
+    }
+
+    &-self-start {
+      place-self: start;
+    }
+
+    &-self-end {
+      place-self: end;
+    }
+
+    &-self-center {
+      place-self: center;
+    }
+
+    &-self-stretch {
+      place-self: stretch;
+    }
+
+    &-self-baseline {
+      place-self: baseline;
+    }
+  }
+
+  &-content {
+    &-center {
+      place-content: center;
+    }
+
+    &-start {
+      place-content: start;
+    }
+
+    &-end {
+      place-content: end;
+    }
+
+    &-stretch {
+      place-content: stretch;
+    }
+
+    &-around {
+      place-content: around;
+    }
+
+    &-between {
+      place-content: between;
+    }
+
+    &-evenly {
+      place-content: evenly;
+    }
+  }
+}
+
+$cols: 12;
+$rowMax: 6;
+
+@for $col from 1 through $cols {
+  .grid-cols-#{$col} {
+    grid-template-columns: repeat($col, minmax(0, 1fr));
+  }
+
+  .grid-rows-#{$col} {
+    grid-template-rows: repeat($col, minmax(0, 1fr));
+  }
+
+  .col-span-#{$col} {
+    grid-column: span $col / span $col;
+  }
+
+  @if ($col <= $rowMax) {
+    .row-span-#{$col} {
+      grid-row: span $col / span $col;
+    }
+  }
+}
+
+@for $n from 0 to 100 {
+  .gap-#{$n} {
+    gap: toRem($n);
+  }
+
+  .gap-x-#{$n} {
+    column-gap: toRem($n);
+  }
+
+  .gap-y-#{$n} {
+    row-gap: toRem($n);
+  }
+
+  .pe-#{$n} {
+    padding: toRem($n) !important;
+  }
+
+  .pex-#{$n} {
+    padding-left: toRem($n) !important;
+    padding-right: toRem($n) !important;
+  }
+
+  .pey-#{$n} {
+    padding-top: toRem($n) !important;
+    padding-bottom: toRem($n) !important;
+  }
+
+  .me-#{$n} {
+    margin: toRem($n) !important;
+  }
+
+  .mex-#{$n} {
+    margin-left: toRem($n) !important;
+    margin-right: toRem($n) !important;
+  }
+
+  .mey-#{$n} {
+    margin-top: toRem($n) !important;
+    margin-bottom: toRem($n) !important;
+  }
+
+  .pet-#{$n} {
+    padding-top: toRem($n) !important;
+  }
+
+  .peb-#{$n} {
+    padding-bottom: toRem($n) !important;
+  }
+
+  .per-#{$n} {
+    padding-right: toRem($n) !important;
+  }
+
+  .pel-#{$n} {
+    padding-left: toRem($n) !important;
+  }
+
+  .met-#{$n} {
+    margin-top: toRem($n) !important;
+  }
+
+  .meb-#{$n} {
+    margin-bottom: toRem($n) !important;
+  }
+
+  .mer-#{$n} {
+    margin-right: toRem($n) !important;
+  }
+
+  .mel-#{$n} {
+    margin-left: toRem($n) !important;
+  }
+}

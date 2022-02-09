@@ -1,0 +1,38 @@
+.btn {
+  transition: all 0.6s ease-in-out;
+
+  &-circle {
+    border-radius: 50%;
+    height: toRem(35);
+    width: toRem(35);
+    background: $brand-gray;
+    color: $brand-dark;
+    transition: all 0.4s ease-in-out;
+
+    display: grid;
+    place-items: center;
+
+    &-gray {
+      background: $brand-dark-lighter;
+      color: $color-text;
+    }
+
+    &-sm {
+      height: toRem(25);
+      width: toRem(25);
+      font-size: toRem(14);
+    }
+
+    &-lg {
+      height: toRem(50);
+      width: toRem(50);
+      font-size: toRem(18);
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 1px 3px 0 rgba(242, 241, 245, 0.1),
+        0 1px 2px 0 rgba(242, 241, 245, 0.06);
+    }
+  }
+}

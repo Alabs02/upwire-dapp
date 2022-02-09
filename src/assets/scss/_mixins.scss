@@ -1,0 +1,11 @@
+@mixin media($width, $height, $overflow, $fit) {
+  width: toRem($width);
+  height: toRem($height);
+  overflow: $overflow;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: $fit;
+  }
+}

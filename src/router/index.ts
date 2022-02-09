@@ -2,6 +2,9 @@ import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
 
+// MODULE ROUTES
+import clientRoutes from "@/router/client-routes";
+
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
@@ -19,6 +22,7 @@ const routes: Array<RouteConfig> = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
+  ...clientRoutes,
 ];
 
 const router = new VueRouter({

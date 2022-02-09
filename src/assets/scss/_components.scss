@@ -1,0 +1,45 @@
+.badge {
+  height: toRem(35);
+  width: toRem(35);
+  border-radius: 50%;
+  font-size: toRem(18);
+  transition: all 0.4s ease-in-out;
+
+  display: grid;
+  place-items: center;
+
+  &::before {
+    content: attr(data-badge);
+  }
+
+  &:hover {
+    transform: scale(0.9);
+  }
+
+  &-sm {
+    height: toRem(20);
+    width: toRem(20);
+    font-size: toRem(14);
+  }
+
+  &-lg {
+    height: toRem(50);
+    width: toRem(50);
+    font-size: toRem(20);
+  }
+
+  &-accent {
+    background: $brand-accent;
+    color: $color-text;
+  }
+
+  &-gray {
+    background: $brand-gray;
+    color: $color-text;
+  }
+
+  &-tonic {
+    background: $brand-tonic;
+    color: $brand-light-gray;
+  }
+}
