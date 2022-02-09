@@ -6,7 +6,7 @@
 
     <div class="col-span-10 h-full w-full">
       <app-top-nav />
-      <main class="pe-20 h-full w-full">
+      <main class="h-full w-full">
         <router-view />
       </main>
       <app-bottom-nav />
