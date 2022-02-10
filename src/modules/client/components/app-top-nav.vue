@@ -28,7 +28,7 @@
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
 
     &__media {
       @include media(100, 40, hidden, contain);
@@ -38,6 +38,7 @@
   .search {
     width: 25%;
     height: 100%;
+    display: none;
 
     &__input {
       background: $brand-dark-lighter;
@@ -49,6 +50,16 @@
       &::placeholder {
         color: $color-text;
       }
+    }
+  }
+
+  @include breakpoint-up(md) {
+    .app-top-nav {
+      justify-content: space-between;
+    }
+
+    .search {
+      display: block;
     }
   }
 </style>

@@ -1,17 +1,27 @@
 <template>
-  <div class="w-full h-full">
-    <mini-top-nav />
+  <dashboard-layout>
+    <template v-slot:app-drawer>
+      <app-drawer></app-drawer>
+    </template>
 
-    <div class="grid grid-cols-12 gap-20 pex-20 pet-20 grid-container">
-      <project-card
-        v-for="(project, i) in projects"
-        :key="i"
-        :project="project"
-      />
-    </div>
+    <template v-slot:app-top-nav>
+      <app-top-nav></app-top-nav>
+    </template>
 
-    <app-bottom-nav />
-  </div>
+    <template v-slot:app-content>
+      <mini-top-nav />
+
+      <div class="grid grid-cols-12 gap-20 pex-20 pet-20 grid-container">
+        <project-card
+          v-for="(project, i) in projects"
+          :key="i"
+          :project="project"
+        />
+      </div>
+
+      <app-bottom-nav />
+    </template>
+  </dashboard-layout>
 </template>
 
 <script lang="ts">
@@ -19,12 +29,18 @@
   import MiniTopNav from "@/modules/client/components/mini-top-nav.vue";
   import ProjectCard from "@/modules/client/components/project-card.vue";
   import AppBottomNav from "@/modules/client/components/app-bottom-nav.vue";
+  import DashboardLayout from "@/layouts/dashboard-layout.vue";
+  import AppTopNav from "@/modules/client/components/app-top-nav.vue";
+  import AppDrawer from "@/modules/client/components/app-drawer.vue";
 
   @Component({
     components: {
       MiniTopNav,
       ProjectCard,
-      AppBottomNav
+      AppBottomNav,
+      AppTopNav,
+      AppDrawer,
+      DashboardLayout
     },
   })
 
@@ -117,17 +133,5 @@
 <style scoped lang="scss">
   .grid-container {
     padding-bottom: 5rem;
-  }
-
-  .border {
-    &-red {
-      border: 1px solid red;
-    }
-    &-green {
-      border: 1px solid green;
-    }
-    &-blue {
-      border: 1px solid blue;
-    }
   }
 </style>
