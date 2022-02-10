@@ -1,44 +1,42 @@
 <template>
-  <div class="project-card shadow-sm col-span-3">
+  <button class="project-card shadow-sm pointer">
     <div class="project-card__media position-relative">
       <img
-        v-lazy-src="'https://images.unsplash.com/photo-1524096274206-cb088c99dbcd?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=david-clode-zE99_-6MdYM-unsplash.jpg&w=1920'"
+        v-lazy-src="project.project_poster"
         alt="poster"
       />
 
-      <div class="slider">
-        <vue-round-slider
-          v-model="sliderValue"
-          :min="0"
-          :max="100"
-          :animation="true"
-          :showTooltip="true"
-          circleShaep="full"
-          pathColor="#eee"
-          rangeColor="#ccc"
-        />
+      <div class="level subpixel-antialiased grid place-items-center">
+        70%
       </div>
     </div>
     <div class="project-card__actions pex-20 d-grid place-items-center">
-      <div class="w-full">
-        <h6 class="m-0 fw-bolder heading meb-5">Dewdrop - Final Shot.mov</h6>
+      <div class="w-full grid place-items-start">
+        <h6 class="m-0 fw-bolder heading meb-5">{{ project.project_name }}</h6>
         <div class="d-flex align-items-between">
-          <p class="m-0 subheading mer-5">John Snow</p>
-          <p class="m-0 subheading">Nov 25, 3:30pm</p>
+          <p class="m-0 subheading mer-5">{{ project.freelancer_name }}</p>
+          <p class="m-0 subheading">{{ project.timestamp }}</p>
         </div>
       </div>
     </div>
-  </div>
+  </button>
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
-  import { VueRoundSluder } from "@/packages";
+  import { Component, Vue, Prop } from 'vue-property-decorator';
+  import { VueRoundSlider } from "@/packages";
 
   @Component({
     components: {
-      VueRoundSluder
-    }
+      VueRoundSlider,
+    },
+
+    props: {
+      project: {
+        type: Object,
+        default: () => {},
+      }
+    },
   })
   export default class  extends Vue {
     sliderValue = 60;
@@ -52,6 +50,21 @@
     background: $brand-dark-lighter;
     border-radius: toRem(15);
     overflow: hidden;
+    transition: all 0.2s ease-in-out;
+
+    padding: 0;
+    color: $color-text;
+    grid-column: span 12 / span 12;
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+    }
+
+    &:focus {
+      background: darken($color: $brand-dark-lighter, $amount: 5);
+      transform: scale(1.05);
+    }
 
     &__media {
       width: 100%;
@@ -82,11 +95,31 @@
     }
   }
 
-  .slider {
-    border : 2px solid purple;
-    width: toRem(30);
-    height: toRem(30);
+  .level {
+    height: toRem(40);
+    width: toRem(40);
+    border-radius: 50%;
+    overflow: hidden;
 
     position: absolute;
+    top: toRem(20);
+    right: toRem(20);
+    background: rgba(0, 0, 0,  0.3);
+
+    color: $brand-yellow;
+    font-weight: 900;
+    font-size: toRem(14);
+  }
+
+  @include breakpoint-up(md) {
+    .project-card {
+      grid-column: span 4 / span 4;
+    }
+  }
+
+   @include breakpoint-up(lg) {
+    .project-card {
+      grid-column: span 3 / span 3;
+    }
   }
 </style>

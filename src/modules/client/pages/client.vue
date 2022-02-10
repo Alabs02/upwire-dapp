@@ -1,29 +1,24 @@
 <template>
   <div class="h-screen w-full grid grid-cols-12">
-    <div class="col-span-2 drawer h-full w-full shadow-sm">
+    <div class="col-span-2 drawer h-full w-full shadow-sm position-relative">
       <app-drawer />
     </div>
 
-    <div class="col-span-10 h-full w-full">
+    <div class="h-full w-full main-wrapper">
       <app-top-nav />
-      <main class="h-full w-full">
         <router-view />
-      </main>
-      <app-bottom-nav />
     </div>
   </div>
 </template>
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator';
-  import AppBottomNav from "@/modules/client/components/app-bottom-nav.vue";
   import AppTopNav from "@/modules/client/components/app-top-nav.vue";
   import AppDrawer from "@/modules/client/components/app-drawer.vue";
 
 
   @Component({
     components: {
-      AppBottomNav,
       AppTopNav,
       AppDrawer
     }
@@ -46,5 +41,34 @@
 <style scoped lang="scss">
   .drawer {
     background: $brand-dark;
+    overflow-x: hidden;
+    display: none;
+  }
+
+  .main-wrapper {
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    grid-column: span 12 / span 12;
+  }
+
+  @include breakpoint-up(md) {
+    .drawer {
+      display: none;
+    }
+
+    .main-wrapper {
+      grid-column: span 12 / span 12;
+    }
+  }
+
+   @include breakpoint-up(lg) {
+    .drawer {
+      display: block;
+    }
+
+    .main-wrapper {
+      grid-column: span 10 / span 10;
+    }
   }
 </style>

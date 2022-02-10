@@ -16,9 +16,5 @@
 <style scoped lang="scss">
   .footer {
     border-bottom: toRem(5) solid $brand-blue-light;
-
-    position: absolute;
-    bottom: 0;
-    left: 0;
   }
 </style>

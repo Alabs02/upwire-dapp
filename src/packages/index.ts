@@ -1,3 +1,3 @@
-import VueRoundSluder from "vue-round-slider";
+import VueRoundSlider from "vue-round-slider";
 
-export { VueRoundSluder };
+export { VueRoundSlider };
