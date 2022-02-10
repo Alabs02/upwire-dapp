@@ -105,3 +105,45 @@ body {
 .max-w-full {
   max-width: 100%;
 }
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  color: $color-text;
+}
+
+@mixin tooltip($bg, $textColor) {
+  &::before {
+    content: attr(data-tooltip);
+    background: $bg;
+    color: $textColor;
+    padding: toRem(5) toRem(10);
+    font-size: toRem(14);
+    border-radius: toRem(5);
+    min-width: auto;
+
+    position: absolute;
+    bottom: toRem(-50);
+    left: toRem(5);
+    z-index: 50;
+
+    display: grid;
+    place-items: center;
+  }
+}
+
+.brand-tooltip {
+  display: block;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    @include tooltip($color-text-light, $brand-dark);
+  }
+}
