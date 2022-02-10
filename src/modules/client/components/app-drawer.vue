@@ -42,7 +42,7 @@
     },
 
     filters: {
-      trimText(val) {
+      trimText(val: string) {
         if (!val) return "";
         if (val?.length > 15) {
           return val.substring(0, 15) + "...";
