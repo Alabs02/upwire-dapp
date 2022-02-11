@@ -8,21 +8,43 @@
     </div>
 
     <div>
-      <button class="btn btn-primary shadow pex-25">
+      <button @click="closeModal" class="btn btn-primary shadow pex-25">
         <span class="mer-10">New</span>
         <feather type="plus" class="btn-icon"></feather>
       </button>
     </div>
+
+    <portal to="upwire-modals">
+      <test-modal
+        :show_modal="isOpen"
+        @close-modal="closeModal"
+      />
+    </portal>
   </div>
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
+  import Vue from "vue";
+  import TestModal from "@/modals/client-modals/test-modal.vue";
 
 
-  @Component
-  export default class  extends Vue {
-  }
+  export default Vue.extend({
+    components: {
+      TestModal,
+    },
+
+    data() {
+      return {
+        isOpen: false,
+      };
+    },
+
+    methods: {
+      closeModal(): void {
+        this.isOpen = !this.isOpen;
+      },
+    },
+  });
 </script>
 
 <style scoped lang="scss">

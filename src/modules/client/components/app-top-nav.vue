@@ -15,11 +15,20 @@
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
+  import Vue from "vue";
 
-  @Component
-  export default class  extends Vue {
-  }
+  export default Vue.extend({
+    components: {
+    },
+
+    data() {
+      return {
+      };
+    },
+
+    methods: {
+    },
+  });
 </script>
 
 <style scoped lang="scss">
